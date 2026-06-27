@@ -1,5 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: rgb(244, 193, 76);
+  --text-dark: #333;
+  --text-light: #fff;
+}
+
+
+
 body{
-    background-color: black;
+    background-color:white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +26,7 @@ h1{
 }
 
 form{
-    background-color: white;
+    background-color: rgb(244, 193, 76);
     padding: 20px;
     border-radius: 2px;
     width: 300px;
@@ -21,10 +35,41 @@ form{
 }
 
 button{
-    background-color: black;
+    background-color: rgb(75, 59, 133);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 2px;
     cursor: pointer; 
+}
+
+.navbar{
+    background-color: rgb(244, 193, 76);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+
+}
+.nav-links{
+    list-style-type: none;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.hero {
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  padding-bottom: 20px;
+}
+
+.hero p {
+  padding-bottom: 20px;
+  justify-content: center;
 }
