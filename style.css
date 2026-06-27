@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1{
+   text-align: center;
+    color: rgb(75, 59, 133);
+}
+
+form{
+    background-color: white;
+    padding: 20px;
+    border-radius: 2px;
+    width: 300px;
+    margin: auto;
+
+}
+
+button{
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer; 
+}
