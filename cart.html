@@ -24,23 +24,25 @@
     
     <div class="cart-container">
 
-        <div class="cart-items">
+        <div class="cart-items" id="cart-item">
 
             <h3>Seam XVIII Signature</h3>
             <p>₹ 9,230.00</p>
-            <button class="qty-btn">-</button>
-            <span class="qty-number">1</span>
-            <button class="qty-btn">+</button>
+            <button class="qty-btn" id="minus-btn">-</button>
+            <span class="qty-number" id="qty-number">1</span>
+            <button class="qty-btn" id="plus-btn">+</button>
         
-            <button>Remove</button>
+            <button id="remove-btn">Remove</button>
         </div>
 
         <div class="cart-summary">
             <h2>Order Summary</h2>
-            <p>Total Price</p>
+            <p id="cart-total">Total Price</p>
             <button>Proceed to Checkout</button>
         </div>
 
     </div>
+
+    <script src="cart.js"></script>
 </body>
 </html>
