@@ -1,8 +1,6 @@
 const express = require('express')
-const app = express()
-const productRoutes = require('./routes/productRoutes')
+const router = express.Router()
+const {getProducts} = require('../controllers/productController')
 
-app.use(productRoutes)
-app.listen(5000, function(){
-    console.log('Server is running on port 5000')
-})
+router.get('/products', getProducts)
+module.exports = router

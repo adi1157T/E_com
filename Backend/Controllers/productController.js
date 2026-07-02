@@ -5,3 +5,4 @@ function getProducts(req, res){
         {id : 3, name: "Bluetooth Speake", price: 1999},    
     ])
 }
+module.exports = {getProducts}
