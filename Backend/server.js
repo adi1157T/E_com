@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGO_URI)
  .catch((err)=> console.log('MongoDB connection error:', err))
 
 const productRoutes = require('./routes/productRoutes')
-app.use( productRoutes)
+app.use('/api', productRoutes)
 
 const authRoutes = require('./routes/authRoutes')
 app.use('/api/auth', authRoutes)
