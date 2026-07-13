@@ -1,9 +1,7 @@
-document.querySelector('#login-btn').addEventListener('click', function() {
+document.querySelector('#login-btn').addEventListener('click',async function(event){
   event.preventDefault()
   // 1. read email value
-  document.querySelector('#email').value
   // 2. read password value
-  document.querySelector('#password').value
   // 3. check if empty
   // 4. check password length
   let email = document.querySelector('#email').value
@@ -16,6 +14,18 @@ document.querySelector('#login-btn').addEventListener('click', function() {
     document.querySelector('#error-msg').textContent = "Password must be at least 8 charachters"
   }
   else {
-  document.querySelector('#error-msg').textContent = "Login Successful"
-}
-})
+  const response = await fetch ('http://localhost:5000/api/auth/login',{
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({email, password})
+  })
+  const data = await response.json()  
+  
+  if (response.ok) {
+    localStorage.setItem('token', data.token)
+    window.location.href = 'index.html'
+  } else {
+    document.querySelector('#error-msg').textContent = data.message
+  }
+  }
+  })

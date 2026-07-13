@@ -1,4 +1,4 @@
-document.querySelector('#register-btn').addEventListener('click', function() {
+document.querySelector('#register-btn').addEventListener('click',async function(event){
   event.preventDefault()
 
   let username = document.querySelector('#username').value
@@ -16,6 +16,19 @@ document.querySelector('#register-btn').addEventListener('click', function() {
     document.querySelector('#error-msg').textContent = "Password must be same"
   }
   else {
-    document.querySelector('#error-msg').textContent = "Registeration Successful"
+    const response = await fetch ('http://localhost:5000/api/auth/register',{
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: username, email: email, password: password})
+  })
+  const data = await response.json()  
+  
+  if (response.ok) {
+    localStorage.setItem('token', data.token)
+    window.location.href = 'login.html'
+  } else {
+    document.querySelector('#error-msg').textContent = data.message
+  }
+
 }
 })
