@@ -4,7 +4,7 @@ Stack:
 
 Frontend: HTML, CSS, JavaScript, React, Tailwind CSS
 Backend: Node.js, Express.js
-Database: PostgreSQL + Prisma ORM
+Database: MongoDB
 Auth: JWT + bcrypt
 Images: Cloudinary
 Version Control: Git + GitHub
