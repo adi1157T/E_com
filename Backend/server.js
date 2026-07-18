@@ -23,6 +23,9 @@ app.use('/api/cart', cartRoutes)
 const orderRoutes = require('./routes/orderRoutes')
 app.use('/api/orders', orderRoutes)
 
+const paymentRoutes = require('./routes/paymentRoutes')
+app.use('/api/payment', paymentRoutes)
+
 app.listen(process.env.PORT, function(){
     console.log(`Server is running on port ${process.env.PORT}`)
 })

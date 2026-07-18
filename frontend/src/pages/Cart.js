@@ -31,15 +31,63 @@ function Cart() {
     }
   }
 
-  const placeOrder = async () => {
-    try {
-      await API.post('/orders')
-      setMessage('Order placed successfully!')
-      setTimeout(() => navigate('/orders'), 2000)
-    } catch (err) {
-      setMessage('Failed to place order')
+  const loadRazorpay = () => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+    script.onload = () => resolve(true)
+    script.onerror = () => resolve(false)
+    document.body.appendChild(script)
+  })
+}
+
+const handlePayment = async () => {
+  try {
+    const loaded = await loadRazorpay()
+    if (!loaded) {
+      setMessage('Razorpay failed to load')
+      return
     }
+
+    const total = calculateTotal()
+    const res = await API.post('/payment/create-order', { amount: total })
+
+    const options = {
+      key: res.data.keyId,
+      amount: res.data.amount,
+      currency: res.data.currency,
+      name: 'BuyHard',
+      description: 'Purchase',
+      order_id: res.data.orderId,
+      handler: async (response) => {
+        try {
+          await API.post('/payment/verify', {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature
+          })
+          await API.post('/orders')
+          setMessage('Payment successful! Order placed.')
+          setTimeout(() => navigate('/orders'), 2000)
+        } catch (err) {
+          setMessage('Payment verification failed')
+        }
+      },
+      prefill: {
+        name: 'Customer',
+        email: 'customer@example.com'
+      },
+      theme: {
+        color: '#7C3AED'
+      }
+    }
+
+    const paymentObject = new window.Razorpay(options)
+    paymentObject.open()
+  } catch (err) {
+    setMessage('Payment failed. Try again.')
   }
+}
 
   const calculateTotal = () => {
     if (!cart || !cart.items) return 0
@@ -73,7 +121,7 @@ function Cart() {
         <div className="cart-summary">
           <h2>Order Summary</h2>
           <p>Total: ₹{calculateTotal()}</p>
-          <button onClick={placeOrder} className="checkout-btn">Place Order</button>
+          <button onClick={handlePayment} className="checkout-btn">Pay Now ₹{calculateTotal()}</button>
         </div>
       </div>
     </div>
