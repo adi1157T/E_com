@@ -22,7 +22,7 @@ function Login() {
     }
     try {
       const res = await API.post('/auth/login', { email, password })
-      login(res.data.token)
+      login(res.data.token, res.data.role)
       navigate('/')
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed')

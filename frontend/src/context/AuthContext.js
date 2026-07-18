@@ -12,19 +12,20 @@ export function AuthProvider({ children }) {
     }
   }, [token])
 
-  const login = (tokenData) => {
-    localStorage.setItem('token', tokenData)
-    setToken(tokenData)
-  }
+  const login = (tokenData, role) => {
+  localStorage.setItem('token', tokenData)
+  localStorage.setItem('role', role)
+  setToken(tokenData)
+}
 
-  const logout = () => {
-    localStorage.removeItem('token')
-    setToken(null)
-    setUser(null)
-  }
-
+const logout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('role')
+  setToken(null)
+}
+const role = localStorage.getItem('role')
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, role, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
