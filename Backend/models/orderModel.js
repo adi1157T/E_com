@@ -31,7 +31,20 @@ const orderSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+
+    shippingAddress: {
+    fullName: { type: String, required: true },
+    phone: { type: String, required: true },
+    address: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+    pincode: { type: String, required: true }
     }
+
 })
+
+
+
 const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

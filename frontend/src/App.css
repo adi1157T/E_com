@@ -731,3 +731,82 @@ body {
 .order-status-update {
   margin-top: 12px;
 }
+
+/* ===== CHECKOUT ===== */
+.checkout-container {
+  padding: 40px;
+}
+
+.checkout-container h1 {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+}
+
+.checkout-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.checkout-form h2 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.checkout-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout-form input {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+}
+
+.checkout-form input:focus {
+  border-color: var(--primary);
+}
+
+.checkout-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+
+.checkout-summary h2 {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.checkout-total {
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+}

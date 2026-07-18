@@ -12,6 +12,7 @@ import Orders from './pages/Orders'
 import AdminDashboard from './pages/AdminDashboard'
 import ProductDetail from './pages/ProductDetail'
 import AdminRoute from './components/AdminRoute'
+import Checkout from './pages/Checkout'
 
 
 function App() {
@@ -38,6 +39,12 @@ function App() {
             <AdminDashboard />
                 </AdminRoute>
                     } />
+
+        <Route path="/checkout" element={
+  <ProtectedRoute>
+    <Checkout />
+  </ProtectedRoute>
+} />
       </Routes>
     </Router>
   )

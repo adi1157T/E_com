@@ -121,7 +121,7 @@ const handlePayment = async () => {
         <div className="cart-summary">
           <h2>Order Summary</h2>
           <p>Total: ₹{calculateTotal()}</p>
-          <button onClick={handlePayment} className="checkout-btn">Pay Now ₹{calculateTotal()}</button>
+          <button onClick={() => navigate('/checkout')} className="checkout-btn">Proceed to Checkout</button>
         </div>
       </div>
     </div>
